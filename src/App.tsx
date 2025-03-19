@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import styled from '@emotion/styled'
+import { useState } from 'react';
 
 const Container = styled.div`
   height: 100vh;
@@ -45,13 +46,23 @@ const Button = styled.button`
 `;
 
 function App() {
+  const [counter, setCounter] = useState(0);
+  
+  const sub = () => {
+    setCounter(counter - 1);
+  };
+
+  const add = () => {
+    setCounter(counter + 1);
+  };
+
   return (
     <Container>
       <Title>Counter App</Title>
       <Contents>
-        <Button>-</Button>
-        <Label>0</Label>
-        <Button>+</Button>
+        <Button onClick={sub}>-</Button>
+        <Label>{counter}</Label>
+        <Button onClick={add}>+</Button>
       </Contents>
     </Container>
   );
